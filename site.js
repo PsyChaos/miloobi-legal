@@ -1,1 +1,4 @@
 const p=location.pathname.split('/').filter(Boolean).at(-1)||'home';const routes={help:['Yardım','Help'],privacy:['Gizlilik ve KVKK','Privacy and data protection'],terms:['Kullanım koşulları','Terms of use']};document.title=`${routes[p]?.[0]||'Miloobi'} · Miloobi`;
+const languageKey='miloobi-site-language';let language='tr';try{language=localStorage.getItem(languageKey)==='en'?'en':'tr'}catch{}
+function applyLanguage(next){language=next;document.documentElement.lang=next;document.querySelectorAll('main').forEach(el=>el.hidden=next==='en');document.querySelectorAll('.en').forEach(el=>el.hidden=next==='tr');document.querySelectorAll('[data-lang-toggle]').forEach(el=>el.textContent=next==='tr'?'EN':'TR');try{localStorage.setItem(languageKey,next)}catch{}}
+document.querySelectorAll('[data-lang-toggle]').forEach(el=>el.addEventListener('click',()=>applyLanguage(language==='tr'?'en':'tr')));applyLanguage(language);
