@@ -1,0 +1,1 @@
+const p=location.pathname.split('/').filter(Boolean).at(-1)||'home';const routes={help:['Yardım','Help'],privacy:['Gizlilik ve KVKK','Privacy and data protection'],terms:['Kullanım koşulları','Terms of use']};document.title=`${routes[p]?.[0]||'Miloobi'} · Miloobi`;
